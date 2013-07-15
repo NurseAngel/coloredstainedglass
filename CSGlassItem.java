@@ -1,5 +1,10 @@
 package mods.nurseangel.coloredstainedglass;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -39,4 +44,10 @@ public class CSGlassItem extends ItemBlock {
 		int i = itemstack.getItemDamage();
 		return (new StringBuilder(getUnlocalizedName())).append(i).toString();
 	}
+
+	/**
+	 * TODO 光るブロックをわかりやすくするためポーションのようにアイテム欄でも光らせたい<br />
+	 * hasEffectではなかった。<br />
+	 * addEnchantmentしても駄目だったのでテクスチャのせい?
+	 */
 }

@@ -38,7 +38,7 @@ public class ColoredStainedGlass {
 	 *
 	 * @param event
 	 */
-	@Mod.PreInit
+	@Mod.EventHandler
 	public void modPreInit(FMLPreInitializationEvent event) {
 		config = new Config(event);
 	}
@@ -48,7 +48,7 @@ public class ColoredStainedGlass {
 	 *
 	 * @param event
 	 */
-	@Mod.Init
+	@Mod.EventHandler
 	public void modInit(FMLInitializationEvent event) {
 		// ノーマルIDがなければ何もしない
 		if (config.blockIdNormal > 1) {
@@ -80,7 +80,7 @@ public class ColoredStainedGlass {
 
 		// レシピ用にとりあえずnewしておく
 		ItemStack itemGlass = new ItemStack(Block.glass, 1);
-		ItemStack itemGlowstoneDust = new ItemStack(Item.lightStoneDust, 1);
+		ItemStack itemGlowstoneDust = new ItemStack(Item.glowstone, 1);
 		ItemStack[] itemDye = new ItemStack[16];
 		ItemStack[] itemWool = new ItemStack[16];
 		for (int loop = 0; loop < 16; loop++) {

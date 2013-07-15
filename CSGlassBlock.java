@@ -82,14 +82,16 @@ public class CSGlassBlock extends Block {
 
     /**
      * レンダリング方法を変更する?<br />
-     * 1にすると透明になる
+     * 1にすると透明になる<br />
+     * のだがバニラのガラスは0。何故?
      */
     public int getRenderBlockPass()
     {
         return 1;
     }
     /**
-     * falseだと透明?
+     * 1m四方のブロックであるか。<br />
+     * 透過ブロックはfalse
      */
     public boolean isOpaqueCube()
     {
