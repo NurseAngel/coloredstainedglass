@@ -1,4 +1,4 @@
-package mods.nurseangel.coloredstainedglass.proxy;
+package com.github.nurseangel.coloredstainedglass.proxy;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

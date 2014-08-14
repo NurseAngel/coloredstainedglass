@@ -1,4 +1,4 @@
-package mods.nurseangel.coloredstainedglass.proxy;
+package com.github.nurseangel.coloredstainedglass.proxy;
 
 public class CommonProxy
 {

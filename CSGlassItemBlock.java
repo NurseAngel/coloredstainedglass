@@ -1,24 +1,17 @@
-package mods.nurseangel.coloredstainedglass;
+package com.github.nurseangel.coloredstainedglass;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
-public class CSGlassItem extends ItemBlock {
+public class CSGlassItemBlock extends ItemBlockWithMetadata {
 	/**
 	 * コンストラクタ
 	 *
-	 * @param アイテムID
+	 * @param Blockをそのまま渡す
 	 */
-	public CSGlassItem(int i) {
-		super(i);
-		setHasSubtypes(true);
-		setMaxDamage(0);
-		setMaxStackSize(64);
+	public CSGlassItemBlock(Block block) {
+		super(block, block);
 	}
 
 	/**
@@ -48,6 +41,5 @@ public class CSGlassItem extends ItemBlock {
 	/**
 	 * TODO 光るブロックをわかりやすくするためポーションのようにアイテム欄でも光らせたい<br />
 	 * hasEffectではなかった。<br />
-	 * addEnchantmentしても駄目だったのでテクスチャのせい?
 	 */
 }
