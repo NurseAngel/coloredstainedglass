@@ -20,14 +20,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class CSGlassBlock extends BlockBreakable {
 
-	/** メタデータ使用数 */
-	private int colorListLength;
-	/** テクスチャファイル名1文字目 */
+	/** テクスチャファイル番号 */
 	private int textureIndex;
-	/** glassかhemmingか */
+	/** 縁取りブロックが有効か */
 	private boolean isHemming;
 	/** アイコン */
-	IIcon[] icon = new IIcon[16];
+	IIcon[] icon = new IIcon[2];
 
 	/**
 	 * コンストラクタ
@@ -35,21 +33,19 @@ public class CSGlassBlock extends BlockBreakable {
 	 * @param material
 	 *            素材
 	 * @param textureIndex
-	 *            使用するテクスチャ番号1
-	 * @param colorListLength
-	 *            メタデータ使用数=使用するテクスチャ番号2
+	 *            使用するテクスチャ番号
 	 * @param isHemming
-	 *            縁取りあり
+	 *            縁取りブロックが有効
 	 */
-	public CSGlassBlock(Material material, int textureIndex, int colorListLength, boolean isHemming) {
+	public CSGlassBlock(Material material, int textureIndex, boolean isHemming) {
 		// dummyはregisterBlockIconsでしか使ってないのでダミーで問題ない
 		super("dummy", material, false);
 		setStepSound(Block.soundTypeGlass);
 		setHardness(0.2F);
 
 		this.textureIndex = textureIndex;
-		this.colorListLength = colorListLength;
 		this.isHemming = isHemming;
+
 	}
 
 	@Override
@@ -71,12 +67,10 @@ public class CSGlassBlock extends BlockBreakable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		int loop = 0;
-		for (int i = 0; i < colorListLength; i++) {
-			// 素材名からアイコンファイル名を作成
-			String texturePath = isHemming ? (Reference.TEXTURE_PATH + "hemming-" + textureIndex + "-" + i)
-					: (Reference.TEXTURE_PATH + "glass-" + textureIndex + "-" + i);
-			icon[i] = iconRegister.registerIcon(texturePath);
+		String index = String.format("%1$03d", textureIndex);
+		icon[0] = iconRegister.registerIcon(Reference.TEXTURE_PATH + "glass_" + index);
+		if (isHemming) {
+			icon[1] = iconRegister.registerIcon(Reference.TEXTURE_PATH + "hemming_" + index);
 		}
 	}
 
@@ -147,9 +141,11 @@ public class CSGlassBlock extends BlockBreakable {
 	 */
 	@Override
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for (int var4 = 0; var4 < colorListLength; ++var4) {
-			par3List.add(new ItemStack(par1, 1, var4));
+		par3List.add(new ItemStack(par1, 1, 0));
+		if (isHemming) {
+			par3List.add(new ItemStack(par1, 1, 1));
 		}
+
 	}
 
 }
